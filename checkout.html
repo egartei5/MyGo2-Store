@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkout - MyGo 2</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="js/main.js" defer></script>
+  <style>
+    .checkout-container {
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+    .checkout-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #ccc;
+    }
+    .checkout-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-right: 15px;
+    }
+    .item-details {
+      flex-grow: 1;
+    }
+    .quantity-input {
+      width: 40px;
+    }
+    .checkout-total {
+      text-align: right;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    .checkout-button {
+      display: block;
+      margin: 30px auto 0;
+      padding: 10px 20px;
+      background-color: #003366;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MyGo 2 - Checkout</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <main class="checkout-container">
+    <div id="checkout-items"></div>
+    <div class="checkout-total">
+      <strong>Total:</strong> $<span id="checkout-total">0.00</span>
+    </div>
+    <button class="checkout-button" onclick="placeOrder()">Place Order</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MyGo 2. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const checkoutItemsContainer = document.getElementById("checkout-items");
+    const checkoutTotal = document.getElementById("checkout-total");
+
+    function loadCheckoutItems() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let total = 0;
+      checkoutItemsContainer.innerHTML = "";
+
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+
+        checkoutItemsContainer.innerHTML += `
+          <div class="checkout-item">
+            <img src="${item.image}" alt="${item.name}" />
+            <div class="item-details">
+              <strong>${item.name}</strong><br>
+              $${item.price} x 
+              <input type="number" value="${item.quantity}" min="1" class="quantity-input" onchange="updateQuantity(${index}, this.value)" />
+              <button onclick="removeItem(${index})">Remove</button>
+            </div>
+          </div>
+        `;
+      });
+
+      checkoutTotal.textContent = total.toFixed(2);
+    }
+
+    function updateQuantity(index, newQty) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart[index].quantity = parseInt(newQty);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCheckoutItems();
+    }
+
+    function removeItem(index) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCheckoutItems();
+    }
+
+    function placeOrder() {
+      alert("Order placed successfully!");
+      localStorage.removeItem("cart");
+      window.location.href = "index.html";
+    }
+
+    window.onload = loadCheckoutItems;
+  </script>
+</body>
+</html>

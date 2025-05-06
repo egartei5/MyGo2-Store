@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MyGo 2 | Shopping Cart</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/main.js" defer></script>
+  <style>
+    .cart-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .cart-item h3 {
+      margin: 0;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .clear-btn {
+      margin-top: 20px;
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .clear-btn:hover {
+      background-color: #0059b3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MyGo 2</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <main class="cart-container">
+    <h2>Your Shopping Cart</h2>
+    <div id="cart-items"></div>
+    <div class="total" id="cart-total"></div>
+    <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
+  </main>
+
+  <footer>
+    <p>Phone: 7019649823</p>
+    <p>Email: Sandykoromago2store@gmail.com</p>
+    <p>&copy; 2025 MyGo 2. All rights reserved.</p>
+  </footer>
+</body>
+</html>
