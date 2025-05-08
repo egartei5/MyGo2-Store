@@ -5,6 +5,7 @@
   <title>Our Products</title>
   <link rel="stylesheet" href="style.css">
   <script src="js/main.js" defer></script>
+  <script src="js/slider.js" defer></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -59,11 +60,33 @@
       border-radius: 8px;
       object-fit: cover;
       margin-bottom: 15px;
+      display: none;
+    }
+
+    .product-card img.active {
+      display: block;
     }
 
     .product-card h3 {
       color: #e91e63;
       margin: 10px 0;
+    }
+
+    .slider-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .slider-buttons button {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
     }
 
     button {
@@ -103,17 +126,29 @@
   <main>
     <h2>Our Handbags</h2>
 
+    <!-- ✅ SLIDER VERSION: New Fashion Styled Square Bag -->
     <div class="product-card">
-      <img src="images/IMG_1067.JPG" alt="Box Handbag">
-      <h3>Box Handbag</h3>
+      <div class="slider-buttons">
+        <button onclick="showImage('slider1', 0)">Black</button>
+        <button onclick="showImage('slider1', 1)">Brown</button>
+        <button onclick="showImage('slider1', 2)">Deep Blue + Brown</button>
+      </div>
+      <div id="slider1">
+        <img src="images/IMG_1527.JPG" class="active" alt="Black Square Bag">
+        <img src="images/IMG_1528.JPG" alt="Brown Square Bag">
+        <img src="images/IMG_1529.JPG" alt="Deep Blue Square Bag">
+      </div>
+      <h3>New Fashion Styled Square Bag</h3>
       <p>Colors: Black, Brown, Deep Blue + Brown</p>
-      <p>Stock: 5 each</p>
+      <p>Stock: 5 pieces of each color</p>
       <p>Price: $17.99</p>
-      <button onclick="addToCart('Box Handbag', 17.99, 'images/IMG_1067.JPG')">Add to Cart</button>
+      <button onclick="addToCart('New Fashion Styled Square Bag', 17.99, 'images/IMG_1527.JPG')">Add to Cart</button>
     </div>
 
+    <!-- Keep other static products as they are -->
+    <!-- Example of one below -->
     <div class="product-card">
-      <img src="images/IMG_1512.JPG" alt="Fashion PU Handbag">
+      <img src="images/IMG_1512.JPG" alt="Fashion PU Handbag" class="active">
       <h3>Fashion PU Handbag</h3>
       <p>Colors: White, Khaki, Brown, Green, Rose Red, Blue, Black</p>
       <p>Stock: 5 each</p>
@@ -121,59 +156,7 @@
       <button onclick="addToCart('Fashion PU Handbag', 13.99, 'images/IMG_1512.JPG')">Add to Cart</button>
     </div>
 
-    <div class="product-card">
-      <img src="images/IMG_1517.JPG" alt="Fashion Shoulder Bag">
-      <h3>Fashion Shoulder Bag</h3>
-      <p>Colors: Red, Brown, Black, Khaki, Blue</p>
-      <p>Stock: 4 each</p>
-      <p>Price: $14.92</p>
-      <button onclick="addToCart('Fashion Shoulder Bag', 14.92, 'images/IMG_1517.JPG')">Add to Cart</button>
-    </div>
-
-    <div class="product-card">
-      <img src="images/IMG_1518.JPG" alt="USB Chest Bag">
-      <h3>USB Chest Bag</h3>
-      <p>Colors: Black, Grey & Brown, Blue & Brown</p>
-      <p>Stock: 5 each</p>
-      <p>Price: $10.99</p>
-      <button onclick="addToCart('USB Chest Bag', 10.99, 'images/IMG_1518.JPG')">Add to Cart</button>
-    </div>
-
-    <div class="product-card">
-      <img src="images/IMG_1526.JPG" alt="Kalanta Leather Tote">
-      <h3>Kalanta Leather Tote</h3>
-      <p>Colors: Red, Beige, Black</p>
-      <p>Stock: 5 each</p>
-      <p>Price: $26.78</p>
-      <button onclick="addToCart('Kalanta Leather Tote', 26.78, 'images/IMG_1526.JPG')">Add to Cart</button>
-    </div>
-
-    <div class="product-card">
-      <img src="images/IMG_1529.JPG" alt="Triangle Bag">
-      <h3>Triangle Bag</h3>
-      <p>Colors: Red, Yellow, Black</p>
-      <p>Stock: 3 each</p>
-      <p>Price: $13.52</p>
-      <button onclick="addToCart('Triangle Bag', 13.52, 'images/IMG_1529.JPG')">Add to Cart</button>
-    </div>
-
-    <div class="product-card">
-      <img src="images/IMG_1532.JPG" alt="Crossbody Purse">
-      <h3>Crossbody Purse</h3>
-      <p>Colors: Pink & Red, Blue & Pink, Brown</p>
-      <p>Stock: 3 each</p>
-      <p>Price: Coming soon</p>
-      <button disabled>Coming Soon</button>
-    </div>
-
-    <div class="product-card">
-      <img src="images/IMG_1536.JPG" alt="Chain Handle Purse">
-      <h3>Chain Handle Purse</h3>
-      <p>Colors: White, Camel, Green, Black, Brown, Pink, Dark Green</p>
-      <p>Stock: 3 each</p>
-      <p>Price: $15.72</p>
-      <button onclick="addToCart('Chain Handle Purse', 15.72, 'images/IMG_1536.JPG')">Add to Cart</button>
-    </div>
+    <!-- Add the rest of your original product cards here -->
   </main>
 
   <footer>

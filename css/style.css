@@ -9,7 +9,7 @@ body {
 
 /* Header/Nav */
 header {
-  background-color: #003366;
+  background-color: #e91e63; /* Pink */
   color: white;
   padding: 20px;
   text-align: center;
@@ -39,7 +39,7 @@ nav a:hover {
 footer {
   text-align: center;
   padding: 15px;
-  background: #003366;
+  background: #e91e63; /* Pink */
   color: white;
   margin-top: 40px;
 }
@@ -72,7 +72,7 @@ main {
 
 /* Buttons */
 button {
-  background-color: #003366;
+  background-color: #e91e63; /* Pink */
   color: white;
   border: none;
   padding: 10px 15px;
@@ -81,7 +81,7 @@ button {
 }
 
 button:hover {
-  background-color: #004b99;
+  background-color: #c2185b; /* Darker pink */
 }
 
 /* Forms */

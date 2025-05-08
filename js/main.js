@@ -1,10 +1,19 @@
-function addToCart(productName, price) {
+// Add to Cart Function
+function addToCart(productName, price, image = "") {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push({ name: productName, price: price });
+
+  const existingItem = cart.find(item => item.name === productName);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({ name: productName, price: price, quantity: 1, image: image });
+  }
+
   localStorage.setItem("cart", JSON.stringify(cart));
-  alert(productName + " added to cart!");
+  alert(`${productName} added to cart!`);
 }
-// Show cart items on cart.html
+
+// Display Cart Items on cart.html
 document.addEventListener("DOMContentLoaded", function () {
   const cartContainer = document.getElementById("cart-items");
   const cartTotal = document.getElementById("cart-total");
@@ -14,22 +23,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (cart.length === 0) {
       cartContainer.innerHTML = "<p>Your cart is empty.</p>";
-      cartTotal.textContent = "";
+      cartTotal.textContent = "0.00";
       return;
     }
 
     let total = 0;
-    cart.forEach(item => {
+    cartContainer.innerHTML = "";
+
+    cart.forEach((item, index) => {
+      total += item.price * item.quantity;
       const div = document.createElement("div");
       div.className = "cart-item";
-      div.innerHTML = `<h3>${item.name}</h3><p>$${item.price.toFixed(2)}</p>`;
+      div.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" />
+        <div class="item-info">
+          <strong>${item.name}</strong><br />
+          $${item.price} x 
+          <input type="number" value="${item.quantity}" min="1" class="quantity-input" onchange="updateQuantity(${index}, this.value)">
+          <button onclick="removeItem(${index})">Remove</button>
+        </div>
+      `;
       cartContainer.appendChild(div);
-      total += item.price;
     });
 
-    cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+    cartTotal.textContent = total.toFixed(2);
   }
 });
+
+function updateQuantity(index, quantity) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart[index].quantity = parseInt(quantity);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  location.reload();
+}
+
+function removeItem(index) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  location.reload();
+}
 
 function clearCart() {
   localStorage.removeItem("cart");
