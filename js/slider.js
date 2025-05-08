@@ -10,3 +10,9 @@ function showImage(sliderId, index) {
     });
   }
   
+  function getCurrentImage(sliderId) {
+    const slider = document.getElementById(sliderId);
+    const activeImage = slider.querySelector("img.active");
+    return activeImage ? activeImage.src : "";
+  }
+  
