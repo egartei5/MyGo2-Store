@@ -77,6 +77,7 @@
       justify-content: center;
       gap: 10px;
       margin-bottom: 15px;
+      flex-wrap: wrap;
     }
 
     .slider-buttons button {
@@ -126,7 +127,7 @@
   <main>
     <h2>Our Handbags</h2>
 
-    <!-- ✅ SLIDER VERSION: New Fashion Styled Square Bag -->
+    <!-- New Fashion Styled Square Bag -->
     <div class="product-card">
       <div class="slider-buttons">
         <button onclick="showImage('slider1', 0)">Black</button>
@@ -136,27 +137,62 @@
       <div id="slider1">
         <img src="images/IMG_1527.JPG" class="active" alt="Black Square Bag">
         <img src="images/IMG_1528.JPG" alt="Brown Square Bag">
-        <img src="images/IMG_1529.JPG" alt="Deep Blue Square Bag">
+        <img src="images/IMG_1529.JPG" alt="Deep Blue + Brown Square Bag">
       </div>
       <h3>New Fashion Styled Square Bag</h3>
       <p>Colors: Black, Brown, Deep Blue + Brown</p>
       <p>Stock: 5 pieces of each color</p>
       <p>Price: $17.99</p>
-      <button onclick="addToCart('New Fashion Styled Square Bag', 17.99, 'images/IMG_1527.JPG')">Add to Cart</button>
+      <button onclick="addToCart('New Fashion Styled Square Bag', 17.99, getCurrentImage('slider1'))">Add to Cart</button>
     </div>
 
-    <!-- Keep other static products as they are -->
-    <!-- Example of one below -->
+    <!-- Fashion Box Bags PU Handbags -->
     <div class="product-card">
-      <img src="images/IMG_1512.JPG" alt="Fashion PU Handbag" class="active">
-      <h3>Fashion PU Handbag</h3>
+      <div class="slider-buttons">
+        <button onclick="showImage('slider2', 0)">White</button>
+        <button onclick="showImage('slider2', 1)">Khaki</button>
+        <button onclick="showImage('slider2', 2)">Brown</button>
+        <button onclick="showImage('slider2', 3)">Green</button>
+        <button onclick="showImage('slider2', 4)">Rose Red</button>
+        <button onclick="showImage('slider2', 5)">Blue</button>
+        <button onclick="showImage('slider2', 6)">Black</button>
+      </div>
+      <div id="slider2">
+        <img src="images/IMG_1522.JPG" class="active" alt="White">
+        <img src="images/IMG_1518.JPG" alt="Khaki">
+        <img src="images/IMG_1517.JPG" alt="Brown">
+        <img src="images/IMG_1519.JPG" alt="Green">
+        <img src="images/IMG_1520.JPG" alt="Rose Red">
+        <img src="images/IMG_1521.JPG" alt="Blue">
+        <img src="images/IMG_1516.JPG" alt="Black">
+      </div>
+      <h3>Fashion Box Bags PU Handbags</h3>
       <p>Colors: White, Khaki, Brown, Green, Rose Red, Blue, Black</p>
-      <p>Stock: 5 each</p>
+      <p>Stock: 5 pieces of each color</p>
       <p>Price: $13.99</p>
-      <button onclick="addToCart('Fashion PU Handbag', 13.99, 'images/IMG_1512.JPG')">Add to Cart</button>
+      <button onclick="addToCart('Fashion Box Bags PU Handbags', 13.99, getCurrentImage('slider2'))">Add to Cart</button>
     </div>
 
-    <!-- Add the rest of your original product cards here -->
+    <!-- Man's Large Capacity PU Material Chest Bag -->
+    <div class="product-card">
+      <div class="slider-buttons">
+        <button onclick="showImage('slider3', 0)">Black</button>
+        <button onclick="showImage('slider3', 1)">Grey & Brown</button>
+        <button onclick="showImage('slider3', 2)">Black & Brown</button>
+        <button onclick="showImage('slider3', 3)">Blue & Brown</button>
+      </div>
+      <div id="slider3">
+        <img src="images/IMG_1536.JPG" class="active" alt="Black">
+        <img src="images/IMG_1533.JPG" alt="Grey & Brown">
+        <img src="images/IMG_1534.JPG" alt="Black & Brown">
+        <img src="images/IMG_1535.JPG" alt="Blue & Brown">
+      </div>
+      <h3>Man's Large Capacity PU Material Chest Bag with USB</h3>
+      <p>Colors: Black, Grey & Brown, Black & Brown, Blue & Brown</p>
+      <p>Stock: 5 pieces of each color</p>
+      <p>Price: $10.99</p>
+      <button onclick="addToCart('PU Chest Bag with USB', 10.99, getCurrentImage('slider3'))">Add to Cart</button>
+    </div>
   </main>
 
   <footer>
