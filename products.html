@@ -1,4 +1,4 @@
-the next product name is Man's Large Capacity PU Material Chest Bag with USB fashionables Hot Waterproof Anti-Theft Fanny Pach, and for color we have Black, Gery&Brown, Black&Brown, and Blue&Brown and there is 5 of each color and the price is 10.99. remember this is not a python it is a html and here is the current code for products.html <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -12,35 +12,29 @@ the next product name is Man's Large Capacity PU Material Chest Bag with USB fas
       margin: 0;
       background-color: #fce4ec;
     }
-
     header {
       background-color: #e91e63;
       color: white;
       padding: 20px;
       text-align: center;
     }
-
     nav {
       margin-top: 10px;
     }
-
     nav a {
       color: white;
       margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
     }
-
     nav a:hover {
       text-decoration: underline;
     }
-
     h2 {
       text-align: center;
       margin: 30px 0;
       color: #e91e63;
     }
-
     .product-card {
       background: white;
       border: 1px solid #ddd;
@@ -52,7 +46,6 @@ the next product name is Man's Large Capacity PU Material Chest Bag with USB fas
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
-
     .product-card img {
       width: 100%;
       max-width: 300px;
@@ -62,16 +55,13 @@ the next product name is Man's Large Capacity PU Material Chest Bag with USB fas
       margin-bottom: 15px;
       display: none;
     }
-
     .product-card img.active {
       display: block;
     }
-
     .product-card h3 {
       color: #e91e63;
       margin: 10px 0;
     }
-
     .slider-buttons {
       display: flex;
       justify-content: center;
@@ -79,7 +69,6 @@ the next product name is Man's Large Capacity PU Material Chest Bag with USB fas
       margin-bottom: 15px;
       flex-wrap: wrap;
     }
-
     .slider-buttons button {
       background-color: #e91e63;
       color: white;
@@ -89,7 +78,6 @@ the next product name is Man's Large Capacity PU Material Chest Bag with USB fas
       cursor: pointer;
       border-radius: 4px;
     }
-
     button {
       background-color: #e91e63;
       color: white;
@@ -99,11 +87,9 @@ the next product name is Man's Large Capacity PU Material Chest Bag with USB fas
       border-radius: 5px;
       cursor: pointer;
     }
-
     button:hover {
       background-color: #d81b60;
     }
-
     footer {
       background-color: #e91e63;
       color: white;
@@ -113,6 +99,7 @@ the next product name is Man's Large Capacity PU Material Chest Bag with USB fas
     }
   </style>
 </head>
+
 <body>
   <header>
     <h1>MyGo 2</h1>
@@ -127,44 +114,44 @@ the next product name is Man's Large Capacity PU Material Chest Bag with USB fas
   <main>
     <h2>Our Handbags</h2>
 
-    <!-- ✅ SLIDER PRODUCT: New Fashion Styled Square Bag -->
+    <!-- ✅ Updated New Fashion Styled Square Bag -->
     <div class="product-card">
       <div class="slider-buttons">
-        <button onclick="showImage('slider1', 0)">Black</button>
+        <button onclick="showImage('slider1', 0)">Black and Beige</button>
         <button onclick="showImage('slider1', 1)">Brown</button>
-        <button onclick="showImage('slider1', 2)">Deep Blue + Brown</button>
+        <button onclick="showImage('slider1', 2)">Brown with Black Straps</button>
       </div>
       <div id="slider1">
-        <img src="images/IMG_1527.JPG" class="active" alt="Black Square Bag">
-        <img src="images/IMG_1528.JPG" alt="Brown Square Bag">
-        <img src="images/IMG_1529.JPG" alt="Deep Blue + Brown Square Bag">
+        <img src="images/IMG_1600.JPG" class="active" alt="Black and Beige Handbag">
+        <img src="images/IMG_1601.JPG" alt="Brown Handbag">
+        <img src="images/IMG_1599.JPG" alt="Brown with Black Straps Handbag">
       </div>
       <h3>New Fashion Styled Square Bag</h3>
-      <p>Colors: Black, Brown, Deep Blue + Brown</p>
+      <p>Colors: Black and Beige, Brown, Brown with Black Straps</p>
       <p>Stock: 5 pieces of each color</p>
       <p>Price: $17.99</p>
       <button onclick="addToCart('New Fashion Styled Square Bag', 17.99, getCurrentImage('slider1'))">Add to Cart</button>
     </div>
 
-    <!-- ✅ SLIDER PRODUCT: Fashion Box Bags PU Handbags -->
+    <!-- ✅ Fashion Box Bags PU Handbags -->
     <div class="product-card">
       <div class="slider-buttons">
-        <button onclick="showImage('slider2', 0)">Black</button>
+        <button onclick="showImage('slider2', 0)">White</button>
         <button onclick="showImage('slider2', 1)">Khaki</button>
         <button onclick="showImage('slider2', 2)">Brown</button>
         <button onclick="showImage('slider2', 3)">Green</button>
         <button onclick="showImage('slider2', 4)">Rose Red</button>
         <button onclick="showImage('slider2', 5)">Blue</button>
-        <button onclick="showImage('slider2', 6)">White</button>
+        <button onclick="showImage('slider2', 6)">Black</button>
       </div>
       <div id="slider2">
-        <img src="images/IMG_1522.JPG" alt="White" class="active">
-        <img src="images/IMG_1518.JPG" alt="Khaki">
-        <img src="images/IMG_1517.JPG" alt="Brown">
-        <img src="images/IMG_1519.JPG" alt="Green">
-        <img src="images/IMG_1520.JPG" alt="Rose Red">
-        <img src="images/IMG_1521.JPG" alt="Blue">
-        <img src="images/IMG_1516.JPG" alt="Black">
+        <img src="images/IMG_1522.JPG" class="active" alt="White Handbag">
+        <img src="images/IMG_1518.JPG" alt="Khaki Handbag">
+        <img src="images/IMG_1517.JPG" alt="Brown Handbag">
+        <img src="images/IMG_1519.JPG" alt="Green Handbag">
+        <img src="images/IMG_1520.JPG" alt="Rose Red Handbag">
+        <img src="images/IMG_1521.JPG" alt="Blue Handbag">
+        <img src="images/IMG_1516.JPG" alt="Black Handbag">
       </div>
       <h3>Fashion Box Bags PU Handbags</h3>
       <p>Colors: White, Khaki, Brown, Green, Rose Red, Blue, Black</p>
@@ -172,6 +159,72 @@ the next product name is Man's Large Capacity PU Material Chest Bag with USB fas
       <p>Price: $13.99</p>
       <button onclick="addToCart('Fashion Box Bags PU Handbags', 13.99, getCurrentImage('slider2'))">Add to Cart</button>
     </div>
+
+    <!-- ✅ Man's Large Capacity PU Material Chest Bag -->
+    <div class="product-card">
+      <div class="slider-buttons">
+        <button onclick="showImage('slider3', 0)">Black</button>
+        <button onclick="showImage('slider3', 1)">Grey & Brown</button>
+        <button onclick="showImage('slider3', 2)">Black & Brown</button>
+        <button onclick="showImage('slider3', 3)">Blue & Brown</button>
+      </div>
+      <div id="slider3">
+        <img src="images/IMG_1536.JPG" class="active" alt="Black Chest Bag">
+        <img src="images/IMG_1533.JPG" alt="Grey & Brown Chest Bag">
+        <img src="images/IMG_1534.JPG" alt="Black & Brown Chest Bag">
+        <img src="images/IMG_1535.JPG" alt="Blue & Brown Chest Bag">
+      </div>
+      <h3>Man's Large Capacity PU Material Chest Bag with USB</h3>
+      <p>Colors: Black, Grey & Brown, Black & Brown, Blue & Brown</p>
+      <p>Stock: 5 pieces of each color</p>
+      <p>Price: $10.99</p>
+      <button onclick="addToCart('PU Chest Bag with USB', 10.99, getCurrentImage('slider3'))">Add to Cart</button>
+    </div>
+
+    <!-- ✅ Triangle Shaped High Quality Bags -->
+    <div class="product-card">
+      <div class="slider-buttons">
+        <button onclick="showImage('slider4', 0)">Yellow</button>
+        <button onclick="showImage('slider4', 1)">Brown</button>
+        <button onclick="showImage('slider4', 2)">Blue & Pink</button>
+        <button onclick="showImage('slider4', 3)">Red</button>
+        <button onclick="showImage('slider4', 4)">Pink & Red</button>
+        <button onclick="showImage('slider4', 5)">Black</button>
+      </div>
+      <div id="slider4">
+        <img src="images/IMG_1544.JPG" class="active" alt="Yellow Triangle Bag">
+        <img src="images/IMG_1543.JPG" alt="Brown Triangle Bag">
+        <img src="images/IMG_1542.JPG" alt="Blue & Pink Triangle Bag">
+        <img src="images/IMG_1541.JPG" alt="Red Triangle Bag">
+        <img src="images/IMG_1540.JPG" alt="Pink & Red Triangle Bag">
+        <img src="images/IMG_1539.JPG" alt="Black Triangle Bag">
+      </div>
+      <h3>Triangle Shaped High Quality Bags</h3>
+      <p>Colors: Yellow, Brown, Blue & Pink, Red, Pink & Red, Black</p>
+      <p>Stock: 3 pieces of each color</p>
+      <p>Price: $13.52</p>
+      <button onclick="addToCart('Triangle Shaped High Quality Bags', 13.52, getCurrentImage('slider4'))">Add to Cart</button>
+    </div>
+
+    <!-- ✅ Kalanta OEM Genuine Leather Ladies Purses -->
+    <div class="product-card">
+      <div class="slider-buttons">
+        <button onclick="showImage('slider5', 0)">Red</button>
+        <button onclick="showImage('slider5', 1)">Beige</button>
+        <button onclick="showImage('slider5', 2)">Black</button>
+      </div>
+      <div id="slider5">
+        <img src="images/IMG_1558.JPG" class="active" alt="Red Kalanta Purse">
+        <img src="images/IMG_1559.JPG" alt="Beige Kalanta Purse">
+        <img src="images/IMG_1560.JPG" alt="Black Kalanta Purse">
+      </div>
+      <h3>Kalanta OEM Genuine Leather Ladies Purses and Handbags</h3>
+      <p>Colors: Red, Beige, Black</p>
+      <p>Stock: 5 pieces of each color</p>
+      <p>Price: $26.78</p>
+      <button onclick="addToCart('Kalanta OEM Genuine Leather Ladies Purses', 26.78, getCurrentImage('slider5'))">Add to Cart</button>
+    </div>
+
   </main>
 
   <footer>
@@ -181,4 +234,3 @@ the next product name is Man's Large Capacity PU Material Chest Bag with USB fas
   </footer>
 </body>
 </html>
-make sure to add the updated code to it and rewrite the code
