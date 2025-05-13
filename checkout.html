@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Checkout - Sandy'S Max</title>
+  <title>Checkout - Sandy's Max</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://js.stripe.com/v3/"></script> <!-- ✅ Stripe -->
   <style>
@@ -118,7 +118,7 @@
 
 <body>
   <header>
-    <h1>MyGo 2 - Checkout</h1>
+    <h1>Sandy's Max - Checkout</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="products.html">Products</a>
@@ -198,7 +198,7 @@
     }
 
     // ✅ Stripe
-    const stripe = Stripe("YOUR_PUBLIC_STRIPE_KEY"); // <-- Replace with your real public key
+    const stripe = Stripe("pk_live_51RNjrlFZYifFS4DgmRbtwsOUisnpLgHF8hHvfUaH8yxtulWKmOY3DB5Q6gYhzlPSSOhMMQQ0BUsoZ8rndMJ2Icmi00szW9JlyA");
     const elements = stripe.elements();
     const card = elements.create('card');
     card.mount('#card-element');
