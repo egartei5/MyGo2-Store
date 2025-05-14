@@ -4,116 +4,7 @@
   <meta charset="UTF-8" />
   <title>Checkout - Sandy's Max</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://js.stripe.com/v3/"></script> <!-- ✅ Stripe -->
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f4f4f4;
-    }
-    header {
-      background-color: #e91e63;
-      color: white;
-      padding: 15px 20px;
-      text-align: center;
-    }
-    nav {
-      margin-top: 10px;
-    }
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .checkout-container {
-      padding: 20px;
-      max-width: 700px;
-      margin: auto;
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .checkout-item {
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #ccc;
-      padding: 10px 0;
-    }
-    .checkout-item img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-right: 15px;
-    }
-    .item-details {
-      flex: 1;
-    }
-    .quantity-input {
-      width: 50px;
-      margin-left: 5px;
-    }
-    .checkout-total {
-      text-align: right;
-      font-size: 18px;
-      margin-top: 20px;
-    }
-    .checkout-form {
-      margin-top: 30px;
-    }
-    .checkout-form label {
-      font-weight: bold;
-      display: block;
-      margin-top: 10px;
-    }
-    .checkout-form input {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    #card-element {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-    }
-    .checkout-button {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      background-color: #e91e63;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .checkout-button:hover {
-      background-color: #c2185b;
-    }
-    footer {
-      background-color: #e91e63;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 30px;
-    }
-    @media (max-width: 600px) {
-      .checkout-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .checkout-item img {
-        margin-bottom: 10px;
-      }
-    }
-  </style>
+  <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body>
@@ -132,7 +23,7 @@
       <strong>Total:</strong> $<span id="checkout-total">0.00</span>
     </div>
 
-    <form class="checkout-form" id="checkout-form">
+    <form id="checkout-form">
       <label for="name">Full Name</label>
       <input type="text" id="name" required placeholder="Your full name">
 
@@ -144,9 +35,6 @@
 
       <label for="address">Shipping Address</label>
       <input type="text" id="address" required placeholder="123 Main Street, City, ZIP">
-
-      <label for="card-element">Credit or Debit Card</label>
-      <div id="card-element"></div> <!-- ✅ Stripe Card Input -->
 
       <button type="submit" class="checkout-button">Place Order</button>
     </form>
@@ -197,37 +85,24 @@
       loadCheckoutItems();
     }
 
-    // ✅ Stripe
-    const stripe = Stripe("pk_live_51RNjrlFZYifFS4DgmRbtwsOUisnpLgHF8hHvfUaH8yxtulWKmOY3DB5Q6gYhzlPSSOhMMQQ0BUsoZ8rndMJ2Icmi00szW9JlyA");
-    const elements = stripe.elements();
-    const card = elements.create('card');
-    card.mount('#card-element');
+    window.onload = loadCheckoutItems;
 
     document.getElementById('checkout-form').addEventListener('submit', async (event) => {
       event.preventDefault();
-      const { paymentMethod, error } = await stripe.createPaymentMethod({
-        type: 'card',
-        card: card,
-        billing_details: {
-          name: document.getElementById('name').value,
-          email: document.getElementById('email').value,
-          phone: document.getElementById('phone').value,
-          address: {
-            line1: document.getElementById('address').value
-          }
-        }
+
+      const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+      const response = await fetch('https://a362-208-107-195-143.ngrok.app/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(cartItems),
       });
 
-      if (error) {
-        alert(error.message);
-      } else {
-        alert('Payment successful! Thank you for your order!');
-        localStorage.removeItem("cart");
-        window.location.href = "confirmation.html";
-      }
-    });
+      const { id } = await response.json();
+      const stripe = Stripe('pk_live_51RNjrlFZYifFS4DgmRbtwsOUisnpLgHF8hHvfUaH8yxtulWKmOY3DB5Q6gYhzlPSSOhMMQQ0BUsoZ8rndMJ2Icmi00szW9JlyA');
 
-    window.onload = loadCheckoutItems;
+      await stripe.redirectToCheckout({ sessionId: id });
+    });
   </script>
 </body>
 </html>
