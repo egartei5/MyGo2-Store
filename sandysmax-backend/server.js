@@ -1,17 +1,16 @@
 require('dotenv').config();
 const express = require('express');
-const app = express();
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const cors = require('cors');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+const app = express();
 app.use(cors());
-app.use(express.static('public'));
 app.use(express.json());
 
 app.post('/create-payment-intent', async (req, res) => {
-  const { amount } = req.body;
-
   try {
+    const { amount } = req.body;
+
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
       currency: 'usd',
@@ -22,13 +21,10 @@ app.post('/create-payment-intent', async (req, res) => {
       clientSecret: paymentIntent.client_secret,
     });
   } catch (error) {
-    res.status(400).send({
-      error: {
-        message: error.message,
-      },
-    });
+    console.error('Error creating payment intent:', error);
+    res.status(500).send({ error: error.message });
   }
 });
 
-const PORT = process.env.PORT || 4242;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
