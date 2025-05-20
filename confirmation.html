@@ -89,9 +89,13 @@
     }
 
     #card-element {
-      padding: 10px;
+      background-color: white;
+      height: 45px;
+      padding: 10px 12px;
+      border-radius: 6px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
       margin-top: 5px;
       margin-bottom: 15px;
     }
@@ -138,7 +142,7 @@
       Total: $<span id="checkout-total">0.00</span>
     </div>
 
-    <form class="checkout-form" id="checkout-form">
+    <form class="checkout-form" id="checkout-form" autocomplete="off">
       <label for="name">Full Name</label>
       <input type="text" id="name" required placeholder="Your full name">
 
@@ -259,4 +263,3 @@
   </script>
 </body>
 </html>
-
